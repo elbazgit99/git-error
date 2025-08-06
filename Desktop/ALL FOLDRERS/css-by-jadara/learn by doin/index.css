@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+header {
+height: 80vh;
+width: 100vw;
+background-image: url(background img.jpg)
+background-size: cover;
+nav{
+    left-nav{
+        background-color: yellow;
+        display: inline-block;
+    }
+}
+logo {
+    background-color: chocolate;
+    display: inline-block;
+    width: 40vw;
+    height: 30vh;
+}
+}

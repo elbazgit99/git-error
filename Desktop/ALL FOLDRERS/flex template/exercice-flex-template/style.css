@@ -1,0 +1,51 @@
+body{
+  margin: 0;
+  background-color: rgb(165, 90, 234);
+  nav{
+    /* styling */
+    background-color: rgba(244, 239, 232, 0.914);
+    /* flex */
+    display: flex;
+    justify-content: space-around;
+    ul{
+      margin: 0;
+      padding-left:0;
+      display: flex;
+      gap:.8rem;
+      li{
+        list-style: none;
+      }
+    }
+    img{
+    }
+  }
+  section{
+    margin: 0;
+    display:flex;
+    gap: 1px;
+    main{
+      height: 35rem;
+      width: 100rem;
+      background-color: cadetblue;
+      background-image: url(logo-jadara.webp);
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size:  cover;
+      background-origin: padding-box;
+      background-position-y: bottom;
+      background-position-x: center;
+      background-attachment: fixed;
+      background: red url() no-repeat left/cover padding-box;
+      justify-self: flex-end;
+    }   
+    aside{
+      height: auto;
+      width: 13rem;
+      background-color: brown;
+    } 
+  }
+  footer{
+    height: 9rem;
+    background-color: chartreuse;
+  }
+}

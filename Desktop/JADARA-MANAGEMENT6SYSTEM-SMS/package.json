@@ -1,0 +1,30 @@
+{
+    "name": "jadara-management-system",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon backend/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Essoufimohamed/jadara-management-system.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Essoufimohamed/jadara-management-system/issues"
+    },
+    "homepage": "https://github.com/Essoufimohamed/jadara-management-system#readme",
+    "description": "",
+    "dependencies": {
+        "body-parser": "^2.2.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.5.0",
+        "express": "^5.1.0",
+        "mongodb": "^6.16.0",
+        "mongoose": "^8.14.2",
+        "nodemon": "^3.1.10"
+    }
+}

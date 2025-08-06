@@ -1,0 +1,25 @@
+body{
+  margin: 0px;
+  background-color: rgb(228, 145, 21);
+  nav{
+    border: solid 1px rgb(187, 24, 24);
+    display: flex;
+    justify-content: space-between;
+    .logo{
+      border: solid 1px rgb(0, 255, 17);
+    }
+    ul{
+      border: solid 2px rgb(212, 32, 32);
+      list-style: none;
+      min-width: 70vw;
+
+      display: flex;
+      justify-content:space-between;
+      flex-wrap: wrap;
+      /* gap: 0.8rem;       */
+      li{
+        border: solid 1px rgb(218, 37, 206);
+      }
+    }
+  }
+}

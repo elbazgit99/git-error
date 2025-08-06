@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERN Stack Developer Interview Evaluation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .candidate-info {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+        }
+
+        .candidate-info h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-item label {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .info-item input {
+            padding: 10px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .info-item input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .evaluation-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .rating-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .rating-btn {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .rating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .rating-btn.active {
+            border-width: 3px;
+            transform: scale(1.1);
+        }
+
+        .rating-1.active { background: #ff4757; border-color: #ff3742; color: white; }
+        .rating-2.active { background: #ff6b35; border-color: #ff5722; color: white; }
+        .rating-3.active { background: #ffa726; border-color: #ff9800; color: white; }
+        .rating-4.active { background: #66bb6a; border-color: #4caf50; color: white; }
+        .rating-5.active { background: #42a5f5; border-color: #2196f3; color: white; }
+
+        .rating-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .notes-section {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .notes-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .notes-item textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        .notes-item textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .summary-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .summary-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .summary-score {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .recommendation {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .recommendation select {
+            background: white;
+            color: #333;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .legend {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #764ba2;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+
+        .print-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @media print {
+            body { background: white; }
+            .print-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>MERN Stack Developer Interview Evaluation</h1>
+            <p>30-Minute Technical & Soft Skills Assessment</p>
+        </header>
+
+        <div class="candidate-info">
+            <h2>Candidate Information</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>Candidate Name:</label>
+                    <input type="text" id="candidateName" placeholder="Enter candidate name">
+                </div>
+                <div class="info-item">
+                    <label>Position:</label>
+                    <input type="text" id="position" placeholder="MERN Stack Developer" value="MERN Stack Developer">
+                </div>
+                <div class="info-item">
+                    <label>Interview Date:</label>
+                    <input type="date" id="interviewDate">
+                </div>
+                <div class="info-item">
+                    <label>Interviewer:</label>
+                    <input type="text" id="interviewer" placeholder="Enter interviewer name">
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <h3>Rating Scale Legend</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff4757; border-color: #ff3742;"></div>
+                    <span><strong>1 - Poor:</strong> Major gaps</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff6b35; border-color: #ff5722;"></div>
+                    <span><strong>2 - Below Avg:</strong> Needs improvement</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ffa726; border-color: #ff9800;"></div>
+                    <span><strong>3 - Average:</strong> Meets basic requirements</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #66bb6a; border-color: #4caf50;"></div>
+                    <span><strong>4 - Good:</strong> Above expectations</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #42a5f5; border-color: #2196f3;"></div>
+                    <span><strong>5 - Excellent:</strong> Outstanding</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="evaluation-section">
+            <div class="section-title">🔧 Technical Skills (MERN Stack)</div>
+            <div class="skills-grid" id="technicalSkills"></div>
+        </div>
+
+        <div class="evaluation-section">
+            <div class="section-title">🤝 Soft Skills & Agile Mindset</div>
+            <div class="skills-grid" id="softSkills"></div>
+        </div>
+
+        <div class="evaluation-section">
+            <div class="section-title">💡 Problem Solving & Code Quality</div>
+            <div class="skills-grid" id="problemSolving"></div>
+        </div>
+
+        <div class="notes-section">
+            <h3>📝 Additional Notes & Observations</h3>
+            <div class="notes-grid">
+                <div class="notes-item">
+                    <label><strong>Strengths:</strong></label>
+                    <textarea id="strengths" placeholder="What are the candidate's main strengths?"></textarea>
+                </div>
+                <div class="notes-item">
+                    <label><strong>Areas for Improvement:</strong></label>
+                    <textarea id="improvements" placeholder="What areas need development?"></textarea>
+                </div>
+                <div class="notes-item">
+                    <label><strong>Technical Questions Asked:</strong></label>
+                    <textarea id="questions" placeholder="List key technical questions and responses..."></textarea>
+                </div>
+                <div class="notes-item">
+                    <label><strong>General Observations:</strong></label>
+                    <textarea id="observations" placeholder="Overall impression, cultural fit, enthusiasm..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary-section">
+            <h3>📊 Evaluation Summary</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-score" id="techScore">0.0</div>
+                    <div>Technical Average</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-score" id="softScore">0.0</div>
+                    <div>Soft Skills Average</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-score" id="problemScore">0.0</div>
+                    <div>Problem Solving Average</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-score" id="overallScore">0.0</div>
+                    <div>Overall Score</div>
+                </div>
+            </div>
+            
+            <div class="recommendation">
+                <label><strong>Final Recommendation:</strong></label>
+                <select id="recommendation">
+                    <option value="">Select recommendation...</option>
+                    <option value="hire">✅ Strong Hire - Excellent fit</option>
+                    <option value="hire-conditional">✅ Hire - Good candidate</option>
+                    <option value="maybe">⚠️ Maybe - Needs further evaluation</option>
+                    <option value="no-hire">❌ No Hire - Not suitable</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="print-btn" onclick="window.print()">🖨️ Print Evaluation</button>
+    </div>
+
+    <script>
+        const technicalSkills = [
+            'MongoDB (Database Design & Queries)',
+            'Express.js (API Development)',
+            'React (Components & State Management)',
+            'Node.js (Backend Development)',
+            'JavaScript ES6+ Proficiency',
+            'RESTful API Design',
+            'Git Version Control',
+            'Testing Knowledge (Jest/Cypress)'
+        ];
+
+        const softSkills = [
+            'Communication Skills',
+            'Team Collaboration',
+            'Agile/Scrum Understanding',
+            'Adaptability to Change',
+            'Problem-Solving Approach',
+            'Time Management',
+            'Learning Enthusiasm',
+            'Cultural Fit'
+        ];
+
+        const problemSolving = [
+            'Code Quality & Best Practices',
+            'Debugging Skills',
+            'System Design Thinking',
+            'Security Awareness',
+            'Performance Optimization',
+            'Error Handling'
+        ];
+
+        function createSkillElement(skill, category) {
+            const skillDiv = document.createElement('div');
+            skillDiv.className = 'skill-item';
+            skillDiv.innerHTML = `
+                <div class="skill-name">${skill}</div>
+                <div class="rating-container">
+                    ${[1,2,3,4,5].map(rating => `
+                        <div class="rating-btn rating-${rating}" data-skill="${skill}" data-rating="${rating}">${rating}</div>
+                    `).join('')}
+                </div>
+                <div class="rating-labels">
+                    <span>Poor</span>
+                    <span>Below</span>
+                    <span>Average</span>
+                    <span>Good</span>
+                    <span>Excellent</span>
+                </div>
+            `;
+            return skillDiv;
+        }
+
+        function initializeSkills() {
+            const techContainer = document.getElementById('technicalSkills');
+            const softContainer = document.getElementById('softSkills');
+            const problemContainer = document.getElementById('problemSolving');
+
+            technicalSkills.forEach(skill => {
+                techContainer.appendChild(createSkillElement(skill, 'technical'));
+            });
+
+            softSkills.forEach(skill => {
+                softContainer.appendChild(createSkillElement(skill, 'soft'));
+            });
+
+            problemSolving.forEach(skill => {
+                problemContainer.appendChild(createSkillElement(skill, 'problem'));
+            });
+        }
+
+        function handleRatingClick(event) {
+            if (event.target.classList.contains('rating-btn')) {
+                const skill = event.target.dataset.skill;
+                const rating = event.target.dataset.rating;
+                
+                // Remove active class from all buttons for this skill
+                document.querySelectorAll(`[data-skill="${skill}"]`).forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                event.target.classList.add('active');
+                
+                updateSummary();
+            }
+        }
+
+        function updateSummary() {
+            const categories = {
+                technical: technicalSkills,
+                soft: softSkills,
+                problem: problemSolving
+            };
+
+            let techTotal = 0, techCount = 0;
+            let softTotal = 0, softCount = 0;
+            let problemTotal = 0, problemCount = 0;
+
+            // Calculate technical skills average
+            technicalSkills.forEach(skill => {
+                const activeBtn = document.querySelector(`[data-skill="${skill}"].active`);
+                if (activeBtn) {
+                    techTotal += parseInt(activeBtn.dataset.rating);
+                    techCount++;
+                }
+            });
+
+            // Calculate soft skills average
+            softSkills.forEach(skill => {
+                const activeBtn = document.querySelector(`[data-skill="${skill}"].active`);
+                if (activeBtn) {
+                    softTotal += parseInt(activeBtn.dataset.rating);
+                    softCount++;
+                }
+            });
+
+            // Calculate problem solving average
+            problemSolving.forEach(skill => {
+                const activeBtn = document.querySelector(`[data-skill="${skill}"].active`);
+                if (activeBtn) {
+                    problemTotal += parseInt(activeBtn.dataset.rating);
+                    problemCount++;
+                }
+            });
+
+            const techAvg = techCount > 0 ? (techTotal / techCount).toFixed(1) : '0.0';
+            const softAvg = softCount > 0 ? (softTotal / softCount).toFixed(1) : '0.0';
+            const problemAvg = problemCount > 0 ? (problemTotal / problemCount).toFixed(1) : '0.0';
+            const overallAvg = ((parseFloat(techAvg) + parseFloat(softAvg) + parseFloat(problemAvg)) / 3).toFixed(1);
+
+            document.getElementById('techScore').textContent = techAvg;
+            document.getElementById('softScore').textContent = softAvg;
+            document.getElementById('problemScore').textContent = problemAvg;
+            document.getElementById('overallScore').textContent = overallAvg;
+        }
+
+        // Initialize the form
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSkills();
+            document.addEventListener('click', handleRatingClick);
+            
+            // Set current date
+            document.getElementById('interviewDate').valueAsDate = new Date();
+        });
+    </script>
+</body>
+</html>

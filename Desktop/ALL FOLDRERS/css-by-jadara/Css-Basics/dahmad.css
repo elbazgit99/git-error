@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  header {
+    height: 80vh;
+    width: 100vw;
+    background-image: url(backgroundImg.jpg);
+    background-size: cover;
+
+    nav {
+clear: both;
+      .left-nav {
+        background-color: aquamarine;
+        display: inline-block;
+        width: 35vw;
+  
+
+      }
+
+      .logo {
+        background-color: rgb(73, 16, 172);
+        display: inline-block;
+        width: 30vw;       
+  
+      }
+
+      .right-nav {
+        background-color: rgb(207, 166, 17);
+        display: inline-block;
+        width: 35vw;
+  
+
+      }
+    }
+  }
+}

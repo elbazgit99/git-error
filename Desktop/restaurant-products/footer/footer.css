@@ -1,0 +1,66 @@
+
+.footer {
+   background-color: yellow;
+   color: black;
+   padding: 40px 0 20px;
+}
+.footer-container {
+   margin: 0 auto;
+   display: flex;
+   justify-content:  space-around;
+   flex-grow: 1;
+   padding: 0 20px;
+}
+.footer-section {
+   flex-grow: 1;
+   margin: 20px;
+}
+.footer-section h4 {
+   color: black;
+   margin-bottom: 15px;
+   font-size: 1.2em;
+}
+address {
+   font-style: normal; 
+   line-height: 1.6;
+}
+.hours-list {
+   list-style: none;
+   padding: 0;
+   line-height: 1.8;
+}
+.pages-links {
+   display: flex;
+   gap: 15px;
+   margin-top: 10px;
+}
+.pages-links img {
+   color: black;
+   width: 20px;
+   transition: color 0.3s ease;
+}
+.pages-links a:hover {
+   color: black;
+}
+.copyright {
+   text-align: center;
+   margin-top: 40px;
+   padding-top: 20px;
+   border-top: 1px solid black;
+}
+.facebook {
+   color: black;
+}
+/* responsive design */
+@media(max-width: 441px) {
+   .footer-container{
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: start;
+      flex-wrap: wrap;
+   }
+   .pages-links {
+      justify-content: space-between;
+   }
+}
