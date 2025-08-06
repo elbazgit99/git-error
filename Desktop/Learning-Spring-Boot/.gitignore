@@ -3,3 +3,4 @@
 
 # Except this folder (and its contents)
 !MyProjectFolder/
+# Except this specific file
